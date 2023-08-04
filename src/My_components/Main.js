@@ -25,7 +25,7 @@ export default function Main(props) {
         <section className="text-white body-font overflow-hidden bg-[#0f0f0f]">
             <div className="container px-0 py-14 mx-auto">
                 <div className="lg:w-auto mx-auto flex flex-wrap">
-                    <img alt="ecommerce" className="lg:pl-10 lg:w-2/6 w-full lg:h-auto h-64 object-cover object-center rounded" src={props.data.images.lg} />
+                    <img alt="ecommerce" className="lg:pl-10 lg:w-2/6 w-full lg:h-auto h-64 object-cover object-center rounded" src={props? props.data.images.lg : "https://dummyimage.com/400x400"} />
                     <div className="lg:w-4/6 w-full lg:pl-10 mt-6 lg:mt-0 lg:pr-20">
                         <h1 className="text-red-600 text-5xl title-font font-bold mb-5 ">{props.data.name}</h1>
                         <div className='options font-bold flex flex-row space-x-1 w-auto text-center'>

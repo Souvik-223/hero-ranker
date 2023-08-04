@@ -60,7 +60,6 @@ function App() {
     }
   )
   const [search, setSearch] = React.useState("")
-  const searching = search ? "?hero=" + { search } : ""
 
   function toggleSearch(val) {
     setSearch(val)
@@ -73,14 +72,25 @@ function App() {
   React.useEffect(() => {
     const options = {
       method: 'GET',
-      headers: { 'X-RapidAPI-Key': '0a38bc4df8mshc3f580867395f02p15af7djsn121abbc4f899' }
+      headers: {
+        'X-RapidAPI-Key': '0a38bc4df8mshc3f580867395f02p15af7djsn121abbc4f899',
+        'X-RapidAPI-Host': 'superhero-search.p.rapidapi.com'
+      }
     };
-    async function getdata() {
-      const res = await fetch(`https://superhero-search.p.rapidapi.com/api/${searching}`, options)
-      const data = await res.json()
-      setapidata(data)
+    const url = "https://superhero-search.p.rapidapi.com/api/";
+    try {
+      async function getdata() {
+        const res = await fetch(`${url}?hero=${search}`, options)
+        const data = await res.json()
+        setapidata(data)
+        console.log(data);
+      }
+      getdata()
     }
-    getdata()
+    catch (error) {
+      console.log(error);
+    }
+    
 
   }, [search])
 
